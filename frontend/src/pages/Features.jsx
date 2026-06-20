@@ -38,7 +38,7 @@ export default function Features() {
         </h3>
         <div className="flex justify-center bg-slate-900/50 p-4 rounded-xl border border-slate-800">
           <img 
-            src="http://localhost:8000/api/reports/correlation_matrix.png" 
+            src={`${apiClient.defaults.baseURL}/reports/correlation_matrix.png`} 
             alt="Correlation Matrix" 
             className="max-w-full h-auto rounded-lg opacity-90 hover:opacity-100 transition-opacity"
             onError={(e) => { e.target.parentElement.innerHTML = '<div class="text-slate-500 p-6 text-center">Run the pipeline first to generate correlation matrix.</div>'; }}
