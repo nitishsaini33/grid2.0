@@ -50,17 +50,11 @@ def save_model(model, name: str):
     joblib.dump(model, path)
     log.info(f"Saved model → {path}")
 
-_model_cache = {}
-
 def load_model(name: str):
-    if name in _model_cache:
-        return _model_cache[name]
     path = MODELS_DIR / f"{name}.joblib"
     if not path.exists():
         raise FileNotFoundError(f"Model not found: {path}")
-    model = joblib.load(path)
-    _model_cache[name] = model
-    return model
+    return joblib.load(path, mmap_mode='r')
 
 def save_json(data: dict, name: str):
     path = REPORTS_DIR / f"{name}.json"
