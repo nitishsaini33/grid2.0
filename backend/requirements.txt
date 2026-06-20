@@ -5,5 +5,5 @@ sqlalchemy
 psycopg2-binary
 pandas
 pyarrow
-scikit-learn
+scikit-learn==1.8.0
 joblib
