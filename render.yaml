@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: astram-backend
+    env: python
+    buildCommand: "pip install -r backend/requirements.txt"
+    startCommand: "cd backend && gunicorn main:app -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.12
+      - key: DATABASE_URL
+        fromDatabase:
+          name: astram-db
+          property: connectionString
+
+databases:
+  - name: astram-db
+    databaseName: astram
+    user: astram_user

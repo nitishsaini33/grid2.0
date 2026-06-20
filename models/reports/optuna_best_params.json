@@ -1,0 +1,41 @@
+{
+  "target": "congestion_severity",
+  "n_trials": 60,
+  "best_params": {
+    "XGBoost": {
+      "n_estimators": 385,
+      "max_depth": 8,
+      "learning_rate": 0.27270624082652517,
+      "subsample": 0.9031100284601863,
+      "colsample_bytree": 0.6240400902943528,
+      "min_child_weight": 2,
+      "gamma": 0.8681094935582455,
+      "reg_alpha": 0.3299775006978889,
+      "reg_lambda": 1.6751742606757012
+    },
+    "LightGBM": {
+      "n_estimators": 194,
+      "max_depth": 5,
+      "learning_rate": 0.06202249903354305,
+      "subsample": 0.7437535292526969,
+      "colsample_bytree": 0.9001852966868735,
+      "min_child_samples": 87,
+      "num_leaves": 117,
+      "reg_alpha": 0.030355348480421263,
+      "reg_lambda": 0.4183291656631432
+    },
+    "CatBoost": {
+      "iterations": 193,
+      "depth": 10,
+      "learning_rate": 0.2350965175734959,
+      "l2_leaf_reg": 2.586552432564088,
+      "border_count": 145,
+      "bagging_temperature": 0.05722105355787782
+    }
+  },
+  "scores": {
+    "XGBoost": 0.998116068289794,
+    "LightGBM": 0.9990654205607477,
+    "CatBoost": 0.9980043724127803
+  }
+}
