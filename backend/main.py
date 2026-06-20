@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, Depends, HTTPException, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from sqlalchemy.orm import Session
@@ -27,6 +27,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 REPORTS_DIR = BASE_DIR / "models" / "reports"
 
 app.mount("/api/reports", StaticFiles(directory=str(REPORTS_DIR)), name="reports")
+
+@app.get("/")
+def read_root():
+    return {"status": "ok", "app": "ASTRAM API"}
+
+@app.get("/health")
+def health_check():
+    return {"status": "healthy"}
+
+@app.get("/favicon.ico")
+def get_favicon():
+    return Response(content=b"", media_type="image/x-icon")
 
 class PredictRequest(BaseModel):
     event_cause: str
