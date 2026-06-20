@@ -13,7 +13,7 @@ from pydantic import BaseModel
 
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="ASTRAM API", description="Traffic Intelligence Backend")
+app = FastAPI(title="ClearWay API", description="Traffic Impact Predictor Backend")
 
 app.add_middleware(
     CORSMiddleware,
@@ -30,7 +30,7 @@ app.mount("/api/reports", StaticFiles(directory=str(REPORTS_DIR)), name="reports
 
 @app.get("/")
 def read_root():
-    return {"status": "ok", "app": "ASTRAM API"}
+    return {"status": "ok", "app": "ClearWay API"}
 
 @app.get("/health")
 def health_check():

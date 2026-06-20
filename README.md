@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🚦 ASTRAM — Traffic Intelligence Platform
+# 🚦 ClearWay — Traffic Impact Predictor Platform
 
 ### Flipkart GRIDLOCK Hackathon 2.0
 
@@ -25,9 +25,9 @@ Political rallies, festivals, sports events, construction activities, and sudden
 - **Resource deployment is experience-driven** — how many officers to send, whether to set up barricades, or reroute traffic is decided by gut-feel.
 - **No post-event learning system** — there's no feedback loop to improve future predictions from past outcomes.
 
-**ASTRAM solves all three.**
+**ClearWay solves all three.**
 
-Given an incoming traffic event (accident, VIP movement, protest, construction, etc.), ASTRAM instantly predicts:
+Given an incoming traffic event (accident, VIP movement, protest, construction, etc.), ClearWay instantly predicts:
 
 | What We Predict | How We Predict It | Output |
 |---|---|---|
@@ -43,7 +43,7 @@ Given an incoming traffic event (accident, VIP movement, protest, construction, 
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                        ASTRAM — Full System                            │
+│                       ClearWay — Full System                           │
 ├─────────────────────────────────────────────────────────────────────────┤
 │                                                                        │
 │   ┌──────────────────┐    ┌───────────────────┐   ┌─────────────────┐ │
@@ -200,7 +200,7 @@ Full-featured data table powered by `@tanstack/react-table` showing the last 500
 
 ## 🔄 Post-Event Learning System (`src/post_event_learning.py`)
 
-ASTRAM implements a **closed-loop feedback system** — the piece that directly addresses the problem statement's requirement for post-event learning:
+ClearWay implements a **closed-loop feedback system** — the piece that directly addresses the problem statement's requirement for post-event learning:
 
 1. **`log_prediction()`** — Stores every prediction (severity, duration, officers, barricades, diversion) alongside the input event parameters
 2. **`record_actual()`** — After the event is resolved, dispatchers record what actually happened (actual severity, actual duration, actual officers deployed)
@@ -211,7 +211,7 @@ ASTRAM implements a **closed-loop feedback system** — the piece that directly 
 ## 🗂️ Complete Project Structure
 
 ```
-ASTRAM/
+ClearWay/
 ├── src/                          # ML Pipeline
 │   ├── preprocessing.py          # Data cleaning, target engineering, imputation
 │   ├── feature_engineering.py    # 46 features: temporal, spatial, categorical, historical, interaction
@@ -233,7 +233,7 @@ ASTRAM/
 ├── frontend/                     # React + Vite + Tailwind CSS Dashboard
 │   ├── src/
 │   │   ├── api/client.js         # Axios client with env-based URL (VITE_API_BASE_URL)
-│   │   ├── App.jsx               # 6-tab navigation with ASTRAM header
+│   │   ├── App.jsx               # 6-tab navigation with ClearWay header
 │   │   └── pages/
 │   │       ├── Overview.jsx      # KPI cards + 3 Recharts visualizations
 │   │       ├── MapView.jsx       # Leaflet map with severity-colored CircleMarkers
@@ -254,7 +254,7 @@ ASTRAM/
 │   └── reports/                  # JSON metrics + 15 analysis PNG plots
 │
 ├── data/
-│   ├── raw/                      # Original ASTRAM event dataset (CSV)
+│   ├── raw/                      # Original ClearWay event dataset (CSV)
 │   └── processed/                # Cleaned parquet, features, targets
 │
 ├── run_pipeline.py               # Master orchestrator (7 stages)

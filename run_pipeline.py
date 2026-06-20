@@ -62,7 +62,7 @@ def step_predict_demo():
 
 def run_full_pipeline():
     t0 = time.time()
-    print_section("ASTRAM ML PIPELINE - FULL RUN")
+    print_section("CLEARWAY ML PIPELINE - FULL RUN")
 
     # 1. Preprocessing
     print_section("STEP 1 — Preprocessing")
@@ -115,7 +115,7 @@ def run_full_pipeline():
 
 # ------------------------------------------------------------------------------
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="ASTRAM ML Pipeline Runner")
+    parser = argparse.ArgumentParser(description="ClearWay ML Pipeline Runner")
     parser.add_argument("--mode", default="full",
                         choices=["full","eda","train","optuna","predict"])
     args = parser.parse_args()

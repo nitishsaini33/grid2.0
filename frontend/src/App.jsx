@@ -27,7 +27,7 @@ export default function App() {
         <div className="flex items-center gap-4">
           <div className="text-4xl">🚦</div>
           <div>
-            <h1 className="text-2xl font-bold text-gradient m-0">ASTRAM — Traffic Intelligence</h1>
+            <h1 className="text-2xl font-bold text-gradient m-0">ClearWay — Traffic Impact Predictor</h1>
             <p className="text-sm text-slate-400 m-0 tracking-wide">Event-Driven Traffic Impact Prediction & Resource Optimization</p>
           </div>
         </div>
