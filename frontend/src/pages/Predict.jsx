@@ -88,8 +88,17 @@ export default function Predict() {
           <span className="text-3xl">📋</span> Prediction Results
         </h2>
         
-        {result ? (
-          <div className="flex flex-col gap-6">
+        {loading ? (
+          <div className="flex-1 flex flex-col items-center justify-center bg-[#1e2330] border border-slate-700 rounded-xl p-12 min-h-[400px]">
+            <div className="relative mb-6">
+              <div className="w-16 h-16 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+              <div className="absolute inset-0 flex items-center justify-center text-2xl">🔮</div>
+            </div>
+            <h3 className="text-xl font-bold text-indigo-400 mb-2 animate-pulse">Analyzing Event Intelligence...</h3>
+            <p className="text-slate-500">Running spatial models and historical simulations</p>
+          </div>
+        ) : result ? (
+          <div className="flex flex-col gap-6 animate-in fade-in zoom-in-95 duration-500">
             
             {/* Top Card: Severity & Duration */}
             <div className="bg-[#1e2330] border border-slate-700 rounded-xl p-6 shadow-lg flex flex-col md:flex-row">
