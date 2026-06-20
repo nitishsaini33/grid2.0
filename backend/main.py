@@ -122,16 +122,31 @@ def get_history(skip: int = 0, limit: int = 500, db: Session = Depends(get_db)):
 
 @app.post("/api/predict")
 def predict_endpoint(req: PredictRequest, db: Session = Depends(get_db)):
-    base_sev = 1
-    if req.priority == "High": base_sev = min(base_sev + 1, 3)
-    if req.road_closure: base_sev = 3
-    if req.event_type == "unplanned" and base_sev < 3: base_sev = min(base_sev + 1, 3)
-
-    manpower_cls = min(base_sev, 4)
-    officers = [2, 4, 8, 12, 20][manpower_cls]
-    bar_cls = 3 if req.road_closure else min(base_sev, 3)
-    div_req = 1 if req.road_closure else 0
-    dur = [30, 90, 240, 480][base_sev]
+    # Import the ML prediction logic
+    import sys
+    src_dir = str(BASE_DIR / "src")
+    if src_dir not in sys.path:
+        sys.path.insert(0, src_dir)
+    
+    from predict import predict_event
+    
+    ts = datetime.utcnow().replace(hour=req.hour)
+    
+    # Get intelligent prediction
+    ml_result = predict_event(
+        event_cause=req.event_cause,
+        event_type=req.event_type,
+        priority=req.priority,
+        requires_road_closure=req.road_closure,
+        latitude=req.lat,
+        longitude=req.lon,
+        timestamp=ts
+    )
+    
+    # Extract values for database
+    base_sev = ml_result["congestion_severity"]["class"]
+    dur = int(ml_result["predicted_duration_min"])
+    officers = ml_result["manpower"]["officers_required"]
 
     event = TrafficEvent(
         start_datetime=datetime.utcnow(),
@@ -150,14 +165,7 @@ def predict_endpoint(req: PredictRequest, db: Session = Depends(get_db)):
     db.commit()
     db.refresh(event)
 
-    return {
-        "congestion_severity": {
-            "class": base_sev,
-            "label": ["Low", "Moderate", "High", "Severe"][base_sev]
-        },
-        "predicted_duration_min": dur,
-        "manpower": {"officers_required": officers},
-        "barricades": {"class": bar_cls},
-        "diversion": {"class": div_req},
-        "event_id": event.id
-    }
+    # Attach event_id for the frontend
+    ml_result["event_id"] = event.id
+
+    return ml_result
