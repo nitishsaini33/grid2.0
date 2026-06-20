@@ -56,7 +56,7 @@ export default function Models() {
   return (
     <div className="flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
       
-      <div className="card-gradient p-6 flex flex-col h-96">
+      <div className="card-gradient p-4 md:p-6 flex flex-col h-80 md:h-96">
         <h3 className="text-sm font-bold text-slate-300 mb-6 uppercase tracking-widest border-b border-slate-700 pb-2">
           Model Comparison — Balanced Accuracy
         </h3>
@@ -79,7 +79,7 @@ export default function Models() {
         )}
       </div>
 
-      <div className="card-gradient p-6">
+      <div className="card-gradient p-4 md:p-6">
         <h3 className="text-sm font-bold text-slate-300 mb-4 uppercase tracking-widest border-b border-slate-700 pb-2">
           Classification Model Test Results
         </h3>
@@ -117,7 +117,7 @@ export default function Models() {
         )}
       </div>
 
-      <div className="card-gradient p-6">
+      <div className="card-gradient p-4 md:p-6">
         <h3 className="text-sm font-bold text-slate-300 mb-4 uppercase tracking-widest border-b border-slate-700 pb-2">
           Regression — Duration Prediction
         </h3>

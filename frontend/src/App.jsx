@@ -23,12 +23,12 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-200 font-sans flex flex-col">
-      <header className="bg-slate-900 border-b border-slate-800 p-6 flex justify-between items-center shadow-lg">
+      <header className="bg-slate-900 border-b border-slate-800 p-4 md:p-6 flex justify-between items-center shadow-lg">
         <div className="flex items-center gap-4">
           <div className="text-4xl">🚦</div>
           <div>
-            <h1 className="text-2xl font-bold text-gradient m-0">ClearWay — Traffic Impact Predictor</h1>
-            <p className="text-sm text-slate-400 m-0 tracking-wide">Event-Driven Traffic Impact Prediction & Resource Optimization</p>
+            <h1 className="text-xl md:text-2xl font-bold text-gradient m-0">ClearWay — Traffic Impact Predictor</h1>
+            <p className="hidden md:block text-sm text-slate-400 m-0 tracking-wide">Event-Driven Traffic Impact Prediction & Resource Optimization</p>
           </div>
         </div>
 
@@ -57,7 +57,7 @@ export default function App() {
         ))}
       </nav>
 
-      <main className="flex-1 p-6 overflow-auto">
+      <main className="flex-1 p-4 md:p-6 overflow-auto">
         {renderTab()}
       </main>
     </div>

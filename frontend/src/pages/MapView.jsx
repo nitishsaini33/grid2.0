@@ -21,10 +21,10 @@ export default function MapView() {
   };
 
   return (
-    <div className="card-gradient h-[80vh] flex flex-col p-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
-      <div className="mb-6 flex justify-between items-center border-b border-slate-700 pb-4">
+    <div className="card-gradient h-[65vh] md:h-[80vh] flex flex-col p-4 md:p-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
+      <div className="mb-6 flex flex-col md:flex-row gap-4 justify-between items-start md:items-center border-b border-slate-700 pb-4">
         <h2 className="text-xl font-bold text-slate-200">📍 Traffic Event Hotspot Map</h2>
-        <div className="flex gap-4 text-xs font-bold uppercase tracking-wider">
+        <div className="flex flex-wrap gap-3 md:gap-4 text-xs font-bold uppercase tracking-wider">
           <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981]"></span>Low</div>
           <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-yellow-500 shadow-[0_0_8px_#eab308]"></span>Moderate</div>
           <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-orange-500 shadow-[0_0_8px_#f97316]"></span>High</div>

@@ -26,7 +26,7 @@ export default function Overview() {
 
   return (
     <div className="flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
-      <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
         <KpiCard title="Total Events" value={kpis?.total_events?.toLocaleString() || '-'} icon="📋" subtitle="All records" color="text-indigo-400" />
         <KpiCard title="Avg Severity" value={kpis?.avg_severity || '-'} icon="⚠️" subtitle="0–3 scale" color="text-orange-500" />
         <KpiCard title="Median Dur." value={kpis?.median_duration ? `${kpis.median_duration}m` : '-'} icon="⏱" subtitle="Per event" color="text-purple-400" />
@@ -36,7 +36,7 @@ export default function Overview() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="card-gradient p-6 h-96 flex flex-col">
+        <div className="card-gradient p-4 md:p-6 h-80 md:h-96 flex flex-col">
           <h3 className="text-sm font-bold text-slate-300 mb-6 uppercase tracking-widest border-b border-slate-700 pb-2">Event Cause Distribution</h3>
           <div className="flex-1 min-h-0">
             <ResponsiveContainer width="100%" height="100%">
@@ -50,7 +50,7 @@ export default function Overview() {
           </div>
         </div>
 
-        <div className="card-gradient p-6 h-96 flex flex-col">
+        <div className="card-gradient p-4 md:p-6 h-80 md:h-96 flex flex-col">
           <h3 className="text-sm font-bold text-slate-300 mb-6 uppercase tracking-widest border-b border-slate-700 pb-2">Zone-wise Mean Severity</h3>
           <div className="flex-1 min-h-0">
             <ResponsiveContainer width="100%" height="100%">
@@ -64,7 +64,7 @@ export default function Overview() {
           </div>
         </div>
 
-        <div className="card-gradient p-6 h-96 md:col-span-2 flex flex-col">
+        <div className="card-gradient p-4 md:p-6 h-80 md:h-96 md:col-span-2 flex flex-col">
           <h3 className="text-sm font-bold text-slate-300 mb-6 uppercase tracking-widest border-b border-slate-700 pb-2">Event Duration Distribution (min)</h3>
           <div className="flex-1 min-h-0">
             <ResponsiveContainer width="100%" height="100%">

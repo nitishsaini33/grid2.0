@@ -45,7 +45,7 @@ export default function History() {
   });
 
   return (
-    <div className="card-gradient p-6 flex flex-col h-[80vh] animate-in fade-in slide-in-from-bottom-4 duration-700">
+    <div className="card-gradient p-4 md:p-6 flex flex-col h-[75vh] md:h-[80vh] animate-in fade-in slide-in-from-bottom-4 duration-700">
       <h2 className="text-xl font-bold text-slate-200 border-b border-slate-700 pb-4 mb-4">📋 Historical Events (Last 500)</h2>
       <div className="flex-1 overflow-auto rounded-xl border border-slate-700 shadow-inner">
         <table className="w-full text-left border-collapse">

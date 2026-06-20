@@ -34,7 +34,7 @@ export default function Predict() {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
       <div className="card-gradient p-6 col-span-1">
         <h2 className="text-xl font-bold text-slate-200 border-b border-slate-700 pb-4 mb-6">⚙️ Event Parameters</h2>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -101,8 +101,8 @@ export default function Predict() {
           <div className="flex flex-col gap-6 animate-in fade-in zoom-in-95 duration-500">
             
             {/* Top Card: Severity & Duration */}
-            <div className="bg-[#1e2330] border border-slate-700 rounded-xl p-6 shadow-lg flex flex-col md:flex-row">
-              <div className="flex-1 pr-6 md:border-r border-slate-700 flex flex-col justify-center">
+            <div className="bg-[#1e2330] border border-slate-700 rounded-xl p-4 md:p-6 shadow-lg flex flex-col md:flex-row">
+              <div className="flex-1 pr-0 md:pr-6 pb-6 md:pb-0 border-b md:border-b-0 md:border-r border-slate-700 flex flex-col justify-center">
                 <div className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">Congestion Severity</div>
                 <div className={`text-5xl font-extrabold mb-4 ${getSeverityColor(result.congestion_severity.class)}`}>
                   {result.congestion_severity.label}
@@ -121,23 +121,23 @@ export default function Predict() {
             </div>
 
             {/* 3 Info Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {/* Officers */}
-              <div className="bg-[#1e2330] border border-slate-700 rounded-xl p-6 text-center shadow-lg">
+              <div className="bg-[#1e2330] border border-slate-700 rounded-xl p-4 md:p-6 text-center shadow-lg">
                 <div className="text-4xl mb-4">👮</div>
                 <div className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Police Officers</div>
                 <div className="text-5xl font-extrabold text-blue-500 mb-3">{result.manpower.officers_required}</div>
                 <div className="text-sm text-slate-500">Class {result.manpower.officers_required <= 4 ? 1 : result.manpower.officers_required <= 8 ? 2 : 3} deployment</div>
               </div>
               {/* Barricades */}
-              <div className="bg-[#1e2330] border border-slate-700 rounded-xl p-6 text-center shadow-lg">
+              <div className="bg-[#1e2330] border border-slate-700 rounded-xl p-4 md:p-6 text-center shadow-lg">
                 <div className="text-4xl mb-4">🚧</div>
                 <div className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Barricades</div>
                 <div className="text-5xl font-extrabold text-orange-500 mb-3">{[0, 2, 5, 10][result.barricades.class] || 0}</div>
                 <div className="text-sm text-slate-500">{["None", "Low barricading", "Medium barricading", "High barricading"][result.barricades.class] || "None"}</div>
               </div>
               {/* Diversion */}
-              <div className="bg-[#1e2330] border border-slate-700 rounded-xl p-6 text-center shadow-lg">
+              <div className="bg-[#1e2330] border border-slate-700 rounded-xl p-4 md:p-6 text-center shadow-lg">
                 <div className="text-4xl mb-4">🔀</div>
                 <div className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Diversion</div>
                 <div className={`text-5xl font-extrabold mb-3 ${result.diversion.class ? 'text-red-500' : 'text-emerald-500'}`}>
@@ -148,7 +148,7 @@ export default function Predict() {
             </div>
 
             {/* Action Plan */}
-            <div className="bg-[#1e2330] border border-slate-700 rounded-xl p-6 shadow-lg">
+            <div className="bg-[#1e2330] border border-slate-700 rounded-xl p-4 md:p-6 shadow-lg">
               <div className="flex items-center gap-2 mb-5">
                 <span className="text-xl">📋</span>
                 <h3 className="text-lg font-bold text-indigo-300">Action Plan</h3>
