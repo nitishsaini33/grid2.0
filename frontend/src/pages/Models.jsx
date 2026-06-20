@@ -63,10 +63,10 @@ export default function Models() {
         {chartData.length > 0 ? (
           <div className="flex-1 min-h-0">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={chartData} margin={{ top: 10, right: 30, left: 0, bottom: 20 }}>
+              <BarChart data={chartData} margin={{ top: 10, right: 30, left: 0, bottom: 60 }}>
                 <XAxis dataKey="name" stroke="#475569" tick={{fontSize: 11}} angle={-30} textAnchor="end" />
                 <YAxis stroke="#475569" tick={{fontSize: 11}} />
-                <Tooltip cursor={{fill: '#1e293b'}} contentStyle={{backgroundColor: '#0f172a', border: '1px solid #334155', borderRadius: '8px'}} />
+                <Tooltip formatter={(value) => typeof value === 'number' ? value.toFixed(3) : value} cursor={{fill: '#1e293b'}} contentStyle={{backgroundColor: '#0f172a', border: '1px solid #334155', borderRadius: '8px', zIndex: 1000}} />
                 <Legend wrapperStyle={{fontSize: 12, paddingTop: '10px'}} />
                 {targets.map((tgt, i) => (
                   <Bar key={tgt} dataKey={tgt} fill={colors[i % colors.length]} radius={[4, 4, 0, 0]} />

@@ -19,10 +19,10 @@ export default function Features() {
         {importance.length > 0 ? (
           <div className="flex-1 min-h-0">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={importance} layout="vertical" margin={{ top: 0, right: 30, left: 60, bottom: 0 }}>
-                <XAxis type="number" stroke="#475569" />
+              <BarChart data={importance} layout="vertical" margin={{ top: 0, right: 30, left: 140, bottom: 0 }}>
+                <XAxis type="number" stroke="#475569" tickFormatter={(v) => v > 1000 ? (v/1000).toFixed(1)+'k' : v} />
                 <YAxis dataKey="feature" type="category" stroke="#94a3b8" width={140} tick={{fontSize: 11}} />
-                <Tooltip cursor={{fill: '#1e293b'}} contentStyle={{backgroundColor: '#0f172a', border: '1px solid #334155', borderRadius: '8px'}} />
+                <Tooltip formatter={(value) => typeof value === 'number' ? value.toFixed(3) : value} cursor={{fill: '#1e293b'}} contentStyle={{backgroundColor: '#0f172a', border: '1px solid #334155', borderRadius: '8px'}} />
                 <Bar dataKey="importance" fill="#22c55e" radius={[0, 4, 4, 0]} animationDuration={1500} />
               </BarChart>
             </ResponsiveContainer>
