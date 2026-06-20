@@ -48,10 +48,6 @@ def evaluate_reg(model, X_test, y_test, name: str) -> dict:
 
 def build_regressors(seed: int = 42):
     return {
-        "RandomForest": RandomForestRegressor(
-            n_estimators=300, random_state=seed, n_jobs=-1),
-        "ExtraTrees": ExtraTreesRegressor(
-            n_estimators=300, random_state=seed, n_jobs=-1),
         "GradientBoosting": GradientBoostingRegressor(
             n_estimators=200, max_depth=5, learning_rate=0.05,
             random_state=seed),
@@ -109,21 +105,6 @@ def run_regression_training(X: pd.DataFrame, Y: pd.DataFrame,
             trained[name] = reg
         except Exception as e:
             log.warning(f"  {name} failed: {e}")
-
-    # Stacking Regressor
-    top3 = sorted(results, key=lambda k: results[k].get("R2", -999), reverse=True)[:3]
-    log.info(f"Top-3 for stacking: {top3}")
-    try:
-        stacker = StackingRegressor(
-            estimators=[(n, trained[n]) for n in top3],
-            final_estimator=Ridge(alpha=1.0),
-            passthrough=True, n_jobs=-1)
-        stacker.fit(X_train, y_train)
-        m = evaluate_reg(stacker, X_val, y_val, "duration/StackingRegressor/val")
-        results["StackingRegressor"] = m
-        trained["StackingRegressor"] = stacker
-    except Exception as e:
-        log.warning(f"StackingRegressor failed: {e}")
 
     best_name = max(results, key=lambda k: results[k].get("R2", -999))
     best_reg  = trained[best_name]
