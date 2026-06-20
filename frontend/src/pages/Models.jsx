@@ -130,7 +130,7 @@ export default function Models() {
             </p>
             <div className="mt-4 flex justify-center bg-slate-900/50 p-4 rounded-xl border border-slate-800">
               <img 
-                src="http://localhost:8000/api/reports/duration_residuals.png" 
+                src={`${apiClient.defaults.baseURL}/reports/duration_residuals.png`} 
                 alt="Duration Residuals" 
                 className="max-w-full h-auto rounded-lg opacity-90 hover:opacity-100 transition-opacity"
                 onError={(e) => { e.target.parentElement.innerHTML = '<div class="text-slate-500 p-6 text-center">No duration residual plot available.</div>'; }}
