@@ -31,11 +31,7 @@ export default function App() {
             <p className="text-sm text-slate-400 m-0 tracking-wide">Event-Driven Traffic Impact Prediction & Resource Optimization</p>
           </div>
         </div>
-        <div className="flex items-center gap-3">
-          <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 px-4 py-1.5 rounded-full font-bold text-sm tracking-wide shadow-[0_0_15px_rgba(16,185,129,0.2)]">
-            🟢 LIVE
-          </span>
-        </div>
+
       </header>
 
       <nav className="bg-slate-900 border-b border-slate-800 px-6 py-3 flex gap-2 overflow-x-auto">
