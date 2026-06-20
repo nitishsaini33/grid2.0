@@ -5,10 +5,6 @@ __pycache__/
 
 # Data
 *.csv
-*.parquet
-
-# Models
-*.joblib
 
 # Logs & DBs
 *.log
