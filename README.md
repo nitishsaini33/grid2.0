@@ -13,6 +13,8 @@
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://postgresql.org)
 
+**[🚀 Live Demo Available Here: https://grid2-0.vercel.app](https://grid2-0.vercel.app)**
+
 </div>
 
 ---
@@ -265,55 +267,50 @@ ClearWay/
 
 ---
 
-## 🚀 Local Development Setup
+## 🚀 Instructions to Run
 
-### Prerequisites
-- Python 3.10+
-- Node.js 18+
+If you wish to run the project locally instead of using the **[Live Deployed Link](https://grid2-0.vercel.app/)**:
 
-### 1. ML Pipeline (Train Models)
+**1. Clone the repository:**
 ```bash
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate       # Windows: venv\Scripts\activate
-
-# Install ML dependencies
-pip install -r requirements.txt
-
-# Place the dataset at data/raw/Astram event data.csv
-
-# Run the full pipeline (preprocessing → features → EDA → Optuna → classification → regression → predictions)
-python run_pipeline.py --mode full
+git clone https://github.com/nitishsaini33/grid2.0.git
+cd grid2.0
 ```
 
-### 2. Backend (FastAPI)
-```bash
-pip install -r backend/requirements.txt
+**2. Setup PostgreSQL Database:**
+Ensure PostgreSQL is installed and running. Create a `.env` file in the `backend/` directory with your database URL:
+```env
+DATABASE_URL=postgresql://user:password@localhost:5432/astram
+```
 
-# Migrate training data + model metrics into the database
+**3. Run the Backend (FastAPI + ML):**
+```bash
 cd backend
-python migrate_to_postgres.py
-
-# Start the API server
-python -m uvicorn main:app --reload --port 8000
+pip install -r requirements.txt
+uvicorn main:app --reload
 ```
+*(The backend runs on http://localhost:8000)*
 
-### 3. Frontend (React Dashboard)
+**4. Run the Frontend (React):**
+Open a new terminal:
 ```bash
 cd frontend
 npm install
 npm run dev
-# Open http://localhost:5173
 ```
+*(The frontend runs on http://localhost:5173)*
+
+**Note:** The Machine Learning pipeline and models can be fully retrained from scratch by running `python run_pipeline.py --mode full` in the root directory.
 
 ---
 
 ## 🌐 Production Deployment
 
-| Component | Platform | Config |
+| Component | Platform | URL |
 |---|---|---|
-| **Backend + Database** | Render | `render.yaml` (auto-provisions PostgreSQL + gunicorn web service) |
-| **Frontend** | Vercel | Root Directory = `frontend`, Env: `VITE_API_BASE_URL` = Render URL |
+| **Frontend UI** | Vercel | [https://grid2-0.vercel.app](https://grid2-0.vercel.app) |
+| **Backend API** | Render | Managed via `render.yaml` |
+| **Database** | Render PostgreSQL | Managed via `render.yaml` |
 
 ---
 
