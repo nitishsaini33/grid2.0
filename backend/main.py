@@ -32,9 +32,13 @@ app.mount("/api/reports", StaticFiles(directory=str(REPORTS_DIR)), name="reports
 def read_root():
     return {"status": "ok", "app": "ClearWay API"}
 
-@app.get("/health")
+@app.api_route("/health", methods=["GET", "HEAD"])
 def health_check():
-    return {"status": "healthy"}
+    return Response(
+        content='{"status":"healthy"}',
+        media_type="application/json",
+        status_code=200
+    )
 
 @app.get("/favicon.ico")
 def get_favicon():
